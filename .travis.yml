@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - ROLE_NAME: ansible-role-multienv
+    - ROLE_NAME: multienv
   matrix:
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: ubuntu1804
