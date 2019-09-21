@@ -1,0 +1,12 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: install docker
+      import_role:
+        name: geerlingguy.docker
+
+    - name: install python-docker
+      package:
+        name: python-docker
+        state: present

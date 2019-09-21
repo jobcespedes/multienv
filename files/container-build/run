@@ -1,0 +1,40 @@
+#!/usr/bin/with-contenv bash
+echo "$( date +'%Y/%m/%d %H:%M:%S' ) Mounting ${UNION_DIRS} in ${MOUNT_PATH}"
+
+params=""
+for key in AUTO_CACHE AUTO_UNMOUNT NONEMPTY COW DIRECT_IO ASYNC_READ HARD_REMOVE USE_INO READDIR_INO ATOMIC_O_TRUNC BIG_WRITES; do
+  value="${!key}"
+  if [ -n "${value}" ];then
+    if [ "$key" == "ASYNC_READ" ];then
+      if [ "${value}_" == "true_" ];then
+         params="$params -o ${key,,}"
+      else
+         params="$params -o sync_read"
+      fi
+    else
+      if [ "_${value}" == "_true" ];then
+        params="$params -o ${key,,}"
+      fi
+    fi
+  fi
+done
+
+for key in ENTRY_TIMEOUT NEGATIVE_TIMEOUT ATTR_TIMEOUT AC_ATTR_TIMEOUT REMEMBER;do
+  value="${!key}"
+  if [ -n "${value}" ];then
+    params="$params -o ${key,,}=$value"
+  fi
+done
+
+_cmd="/usr/bin/unionfs \
+  -f $params \
+  -o allow_other \
+  -o auto_unmount \
+  -o uid=${PUID} \
+  -o gid=${PGID} \
+  ${UNION_DIRS} \
+  ${MOUNT_PATH}"
+
+echo "${_cmd}"
+
+exec $(echo ${_cmd})

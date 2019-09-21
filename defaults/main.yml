@@ -1,0 +1,25 @@
+---
+# defaults file for multienv
+
+# Add environment stack hierarchy in 'multienv_union'. Lastone has most priority.
+multienv_union:
+  - dev
+  - stage
+  - production
+
+# relative to host
+multienv_host_root_path: "{{ playbook_dir }}/"
+multienv_host_mountpoint: "{{ multienv_host_root_path }}/union_environment/"
+multienv_host_multi_path: "{{ multienv_host_root_path }}/environments/"
+
+# relative to container
+multienv_container_version: v1.0.1
+multienv_container_name: "multienv_unionfs_fuse"
+multienv_container_build_name: "{{ multienv_container_name }}:{{ multienv_container_version }}"
+multienv_container_build_path: "{{ role_path }}/files/container-build/"
+multienv_container_tz: "America/Costa_Rica"
+multienv_container_build_force_source: true
+multienv_container_puid: "{{ ansible_real_user_id }}"
+multienv_container_pgid: "{{ ansible_real_group_id }}"
+multienv_container_multi_path: /environments/
+multienv_container_mount_point: /unionfs/
