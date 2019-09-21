@@ -14,7 +14,6 @@ addons:
   apt:
     packages:
       - docker-ce
-      - python-docker
 
 before_install: "./test/scripts/before-install.sh"
 install: "./test/scripts/install.sh"
