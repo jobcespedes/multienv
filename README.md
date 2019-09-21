@@ -1,4 +1,4 @@
-Role Name: jobcespedes.multienv
+Role Name: multienv
 =========
 
 * Development branch: [![Build Status](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv.svg?branch=development)](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv)
