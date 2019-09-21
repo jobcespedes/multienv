@@ -20,19 +20,19 @@
 
 - name: Check directories
   block:
-  - name: Check directories in the host
-    file:
-      dest: "{{ item }}"
-      state: directory
-    with_items:
-      - "{{ multienv_host_mountpoint }}"
-      - "{{ multienv_host_multi_path }}"
+    - name: Check directories in the host
+      file:
+        dest: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ multienv_host_mountpoint }}"
+        - "{{ multienv_host_multi_path }}"
 
-  - name: Check directories to be merged
-    file:
-      dest: "{{ item }}"
-      state: directory
-    with_items: "{{ multienv_host_union_dirs }}"
+    - name: Check directories to be merged
+      file:
+        dest: "{{ item }}"
+        state: directory
+      with_items: "{{ multienv_host_union_dirs }}"
 
 - name: Copy build files
   copy:
