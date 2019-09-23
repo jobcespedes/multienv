@@ -11,10 +11,11 @@ env:
     - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: ubuntu1604
 
-addons:
-  apt:
-    packages:
-      - docker-ce
+# addons:
+#   apt:
+#     packages:
+#       - apt-transport-https
+#       - docker-ce
 
 before_install: "./test/scripts/before-install.sh"
 install: "./test/scripts/install.sh"
