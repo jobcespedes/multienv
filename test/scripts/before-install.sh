@@ -5,7 +5,7 @@
 set -e
 
 cd ../
-mv ansible-role-${ROLE_NAME/_/-} jobcespedes.$ROLE_NAME
+mv $ROLE_NAME jobcespedes.$ROLE_NAME
 cd jobcespedes.$ROLE_NAME
 
 set +e

@@ -1,9 +1,9 @@
 Role Name: multienv
 =========
 
-[![Build Status](https://travis-ci.org/jobcespedes/ansible-role-multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/ansible-role-multienv)[![Buy me a coffee](https://img.shields.io/badge/$-BuyMeACoffee-blue.svg)](https://www.buymeacoffee.com/jobcespedes)
+[![Build Status](https://travis-ci.org/jobcespedes/multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/multienv)[![Buy me a coffee](https://img.shields.io/badge/$-BuyMeACoffee-blue.svg)](https://www.buymeacoffee.com/jobcespedes)
 
-Description: A stackable multienvironment directory layout for Ansible using unionfs and docker. Check this [Github project](https://github.com/jobcespedes/demo-ansible-role-multienv) with demo data for the environments
+Description: A stackable multienvironment directory layout for Ansible using unionfs and docker. Check this [Github project](https://github.com/jobcespedes/demo-multienv) with demo data for the environments
 
 Requirements
 ------------
