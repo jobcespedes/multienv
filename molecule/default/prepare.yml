@@ -3,9 +3,10 @@
   hosts: all
   tasks:
     - name: install apt-transport-https
-      package:
+      apt:
         name: apt-transport-https
-        state: present
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
 
     - name: install docker
       import_role:
