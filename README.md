@@ -1,8 +1,7 @@
 Role Name: multienv
 =========
 
-* Development branch: [![Build Status](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv.svg?branch=development)](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv)
-* Master branch: [![Build Status](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/ansible_jobcespedes.multienv)
+* Master branch: [![Build Status](https://travis-ci.org/jobcespedes/ansible-role-multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/ansible-role-multienv)
 
 Description: A stackable multienvironment directory layout for Ansible using unionfs and docker
 
@@ -12,7 +11,7 @@ Requirements
 - Docker
 - Docker SDK for Python
 
-See [`requirements.txt`](requirements.txt)
+- See [`requirements.txt`](requirements.txt)
 
 Role Variables
 --------------
