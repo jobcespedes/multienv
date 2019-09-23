@@ -6,7 +6,7 @@
   set_fact:
     multienv_container_volumes: >
       {{ multienv_container_volumes | default([]) +
-      [ multienv_host_multi_path + item + ':' + multienv_container_multi_path + item ] }}
+      [ multienv_host_multi_path + item + ':' + multienv_container_multi_path + item + ':shared' ] }}
     multienv_container_union_dirs: >
       {{ multienv_container_union_dirs | default([]) +
       [ multienv_container_multi_path + item + ('=RW' if item == multienv_union | last else '=RO') ] }}

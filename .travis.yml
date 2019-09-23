@@ -11,11 +11,6 @@ env:
     - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: ubuntu1604
 
-addons:
-  apt:
-    packages:
-      - apt-transport-https
-
 before_install: "./test/scripts/before-install.sh"
 install: "./test/scripts/install.sh"
 script: "./test/scripts/test-role.sh"

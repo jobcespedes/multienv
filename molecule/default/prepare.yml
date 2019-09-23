@@ -2,6 +2,11 @@
 - name: Prepare
   hosts: all
   tasks:
+    - name: install apt-transport-https
+      package:
+        name: apt-transport-https
+        state: present
+
     - name: install docker
       import_role:
         name: geerlingguy.docker
