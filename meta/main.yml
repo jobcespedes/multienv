@@ -6,19 +6,14 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
+        - 7
     - name: Ubuntu
       versions:
-        - all
-    - name: GenericLinux
-      versions:
-        - all
+        - bionic
+        - xenial
     - name: Debian
       versions:
-        - all
+        - stretch
   galaxy_tags:
     - development
     - container
