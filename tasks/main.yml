@@ -42,7 +42,7 @@
 - name: Build unionfs-fuse image
   tags: multienv_build
   docker_image:
-    name: "{{ multienv_container_build_name }}"
+    name: "{{ multienv_image_name }}"
     build:
       path: /tmp/multienv_build
       pull: no
@@ -54,7 +54,7 @@
   tags: multienv_run
   docker_container:
     name: "{{ multienv_container_name }}"
-    image: "{{ multienv_container_build_name }}"
+    image: "{{ multienv_image_name }}"
     privileged: true
     env:
       TZ: "{{ multienv_container_tz }}"

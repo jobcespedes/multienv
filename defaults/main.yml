@@ -13,9 +13,9 @@ multienv_host_mountpoint: "{{ multienv_host_root_path }}/union_environment/"
 multienv_host_multi_path: "{{ multienv_host_root_path }}/environments/"
 
 # relative to container
-multienv_container_version: v1.0.1
+multienv_image_version: v1.0.1
+multienv_image_name: "multienv_unionfs:{{ multienv_image_version }}"
 multienv_container_name: "multienv_unionfs_{{ (multienv_host_root_path | to_uuid).split('-')[0] }}"
-multienv_container_build_name: "{{ multienv_container_name }}:{{ multienv_container_version }}"
 multienv_container_build_path: "{{ role_path }}/files/container-build/"
 multienv_container_tz: "America/Costa_Rica"
 multienv_container_build_force_source: true
