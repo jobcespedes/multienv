@@ -32,6 +32,7 @@ _cmd="/usr/bin/unionfs \
   -o auto_unmount \
   -o uid=${PUID} \
   -o gid=${PGID} \
+  -o hide_meta_files \
   ${UNION_DIRS} \
   ${MOUNT_PATH}"
 
