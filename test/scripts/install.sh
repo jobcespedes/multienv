@@ -4,7 +4,7 @@
 # Fail if one of the commands of this script fails
 set -e
 
-pip install -r requirements.txt
+test -f requirements.txt && pip install -r requirements.txt || echo "no requirements"
 pip install molecule docker ansible-lint yamllint
 
 set +e

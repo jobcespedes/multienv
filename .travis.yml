@@ -6,6 +6,7 @@ services:
 env:
   global:
     - ROLE_NAME: multienv
+    - GALAXY_ROLE_NAME: jobcespedes.multienv
   matrix:
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: ubuntu1804
