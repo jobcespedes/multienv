@@ -2,7 +2,7 @@ galaxy_info:
   author: Job Céspedes
   description: A stackable multienvironment directory layout for Ansible using unionfs and docker
   license: Apache 2.0
-  min_ansible_version: 2.5
+  min_ansible_version: 2.8
   platforms:
     - name: EL
       versions:

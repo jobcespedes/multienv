@@ -5,6 +5,6 @@
 set -e
 
 test -f requirements.txt && pip install -r requirements.txt || echo "no requirements"
-pip install molecule docker ansible-lint yamllint
+pip install molecule ansible-lint yamllint
 
 set +e

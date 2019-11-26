@@ -1,7 +1,5 @@
 ---
 # tasks file for multienv
-# - debug:
-#     msg: "{{ ansible_ssh_user }}"
 - name: Set require facts
   set_fact:
     multienv_container_volumes: >
