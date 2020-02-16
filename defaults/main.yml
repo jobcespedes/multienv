@@ -8,8 +8,8 @@ multienv_union:
   - production
 
 # relative to host
-multienv_host_root_path: "{{ playbook_dir }}/"
-multienv_host_mountpoint: "{{ multienv_host_root_path }}/union_environment/"
+multienv_host_root_path: "{{ playbook_dir }}"
+multienv_host_mountpoint: "{{ multienv_host_root_path }}/union_environment/{{ multienv_union | last }}"
 multienv_host_multi_path: "{{ multienv_host_root_path }}/environments/"
 
 # relative to container
