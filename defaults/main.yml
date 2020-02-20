@@ -3,9 +3,8 @@
 
 # Add environment stack hierarchy in 'multienv_union'. Lastone has most priority.
 multienv_union:
+  - base
   - dev
-  - stage
-  - production
 
 # relative to host
 multienv_host_root_path: "{{ playbook_dir }}"

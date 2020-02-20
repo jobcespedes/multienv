@@ -16,22 +16,26 @@ Requirements
 Role Variables
 --------------
 
-Define a stackable environment hierarchy in ```multienv_union``` variable using a list. The last environment in the list has the most priority. More than two directories can be stacked. For example, to stack production over stage and dev:
+Define a stackable environment hierarchy in ```multienv_union``` variable using a list. The last environment in the list has the most priority. For example **dev**:
+```yaml
+multienv_union:
+  - base
+  - dev
+```
+For example **dev**:
+```yaml
+multienv_union:
+  - base
+  - production
+```
+More than two directories can be stacked. For example, to stack **stage** over dev and base:
 
 ```yaml
 multienv_union:
+  - base
   - dev
   - stage
-  - production
 ```
-
-To stack production over dev:
-```yaml
-multienv_union:
-  - dev
-  - production
-```
-
 For the rest of variables:
 
 - See [`defaults/main.yml`](defaults/main.yml).
