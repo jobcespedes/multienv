@@ -37,32 +37,8 @@
     src: "{{ multienv_container_build_path }}"
     dest: "/tmp/multienv_build"
 
-- name: Build unionfs-fuse image
-  tags: multienv_build
-  docker_image:
-    name: "{{ multienv_image_name }}"
-    build:
-      path: /tmp/multienv_build
-      pull: no
-    source: build
-    force_source: "{{ multienv_container_build_force_source if multienv_container_build_force_source is defined else omit }}"
-    debug: "{{ multienv_debug if multienv_debug is defined else omit }}"
+- include_tasks: docker.yml
+  when: not multienv_podman|bool
 
-- name: unionfs-fuse container
-  tags: multienv_run
-  docker_container:
-    name: "{{ multienv_container_name }}"
-    image: "{{ multienv_image_name }}"
-    privileged: true
-    env:
-      TZ: "{{ multienv_container_tz }}"
-      PGID: "{{ multienv_container_puid }}"
-      PUID: "{{ multienv_container_pgid }}"
-      UNION_DIRS: "{{ multienv_container_union_dirs | join(':') }}"
-      MOUNT_PATH: "{{ multienv_container_mount_point }}"
-      COW: "true"
-    volumes: "{{ [multienv_host_mountpoint + ':/unionfs:shared'] + multienv_container_volumes }}"
-    capabilities: "{{ multienv_container_capabilities if multienv_container_capabilities is defined else omit }}"
-    restart: "{{ multienv_container_restart if multienv_container_restart is defined else omit }}"
-    state: "{{ multienv_container_state if multienv_container_state is defined else omit }}"
-    debug: "{{ multienv_debug if multienv_debug is defined else omit }}"
+- include_tasks: podman.yml
+  when: multienv_podman|bool

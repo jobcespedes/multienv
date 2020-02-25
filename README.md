@@ -3,13 +3,17 @@ Role Name: multienv
 
 [![Build Status](https://travis-ci.org/jobcespedes/multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/multienv) [![Buy me a coffee](https://img.shields.io/badge/$-BuyMeACoffee-blue.svg)](https://www.buymeacoffee.com/jobcespedes)
 
-Description: A stackable multienvironment directory layout for Ansible using unionfs and docker. Check this [Github project](https://github.com/jobcespedes/demo-multienv) with demo data for the environments
+Description: A stackable multienvironment directory layout for Ansible using unionfs and Docker or Podman. Check this [Github project](https://github.com/jobcespedes/demo-multienv) with demo data for the environments
 
 Requirements
 ------------
 
+Using docker engine
 - Docker
 - Docker SDK for Python
+
+Using podman engine
+- Podman
 
 - See [`requirements.txt`](requirements.txt)
 
@@ -54,6 +58,15 @@ Example Playbook
     - jobcespedes.multienv
 ```
 
+Run it with docker:
+```bash
+ansible-playbook -i localhost, multienv.yml
+```
+
+Run it with podman:
+```bash
+ansible-playbook -i localhost, multienv.yml -e multienv_podman=true -K
+```
 License
 -------
 
