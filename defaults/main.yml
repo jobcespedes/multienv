@@ -26,5 +26,17 @@ multienv_container_mount_point: /unionfs/
 # container opts
 multienv_container_rm: true
 
-# use podman
-multienv_podman: false
+multienv_method: docker
+# use podman or host binary
+# multienv_method: podman
+# multienv_method: binary
+
+# binary if using that method
+multienv_binary: unionfs
+multienv_binary_options:
+  - cow
+  - allow_other
+  - auto_unmount
+  - hide_meta_files
+  - uid={{ multienv_container_puid }}
+  - gid={{ multienv_container_pgid }}

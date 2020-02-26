@@ -1,0 +1,29 @@
+---
+- name: Using unionfs binary
+  when: multienv_method == 'binary'
+  block:
+    - name: check if binary is available
+      tags: multienv_run
+      command: "command -v {{ multienv_binary }}"
+      register: multienv_binary_available
+      ignore_errors: true
+
+    - name: fail if binary is not available
+      tags: multienv_run
+      fail:
+        msg: "'{{ multienv_binary }}' not found.
+          Make sure it is installed"
+      when: multienv_binary_available is failed
+
+    - name: run unionfs
+      tags: multienv_run
+      when: multienv_stop is not defined
+      command: "{{ multienv_binary }} -o
+        {{ multienv_binary_options | join(',') }}
+        '{{ multienv_host_union_dirs | join(':') }}'
+        '{{ multienv_host_mountpoint }}'"
+
+    - name: unmount
+      tags: multienv_run
+      when: multienv_stop is defined
+      command: "umount '{{ multienv_host_mountpoint }}'"

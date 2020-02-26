@@ -1,6 +1,6 @@
 ---
 - name: Using docker
-  when: not multienv_podman|bool
+  when: multienv_method == 'docker'
   block:
     - name: Docker - Build unionfs-fuse image
       tags: multienv_build
@@ -10,7 +10,8 @@
           path: /tmp/multienv_build
           pull: no
         source: build
-        force_source: "{{ multienv_container_build_force if multienv_container_build_force is defined else omit }}"
+        force_source: "{{ multienv_container_build_force if
+          multienv_container_build_force is defined else omit }}"
         debug: "{{ multienv_debug if multienv_debug is defined else omit }}"
 
     - name: Docker - unionfs-fuse container
@@ -19,16 +20,22 @@
         name: "{{ multienv_container_name }}"
         image: "{{ multienv_image_name }}"
         privileged: true
-        auto_remove: "{{ multienv_container_rm if multienv_container_rm is defined else omit }}"
+        auto_remove: "{{ multienv_container_rm if multienv_container_rm
+          is defined else omit }}"
         env:
           TZ: "{{ multienv_container_tz }}"
           PGID: "{{ multienv_container_puid }}"
           PUID: "{{ multienv_container_pgid }}"
-          UNION_DIRS: "{{ multienv_container_union_dirs | join(':') }}"
+          UNION_DIRS: "{{ multienv_container_union_dirs_options | join(':') }}"
           MOUNT_PATH: "{{ multienv_container_mount_point }}"
           COW: "true"
-        volumes: "{{ multienv_container_volumes + [multienv_host_mountpoint + ':/unionfs:shared'] }}"
-        capabilities: "{{ multienv_container_capabilities if multienv_container_capabilities is defined else omit }}"
-        restart: "{{ multienv_container_restart if multienv_container_restart is defined else omit }}"
-        state: "{{ multienv_container_state if multienv_container_state is defined else omit }}"
+        volumes: "{{ multienv_container_volumes + [multienv_host_mountpoint +
+          ':/unionfs:shared'] }}"
+        capabilities: "{{ multienv_container_capabilities if
+          multienv_container_capabilities is defined else omit }}"
+        restart: "{{ multienv_container_restart if multienv_container_restart
+          is defined else omit }}"
+        state: "{{ 'absent' if multienv_stop is defined else
+          multienv_container_state if multienv_container_state is defined
+          else omit }}"
         debug: "{{ multienv_debug if multienv_debug is defined else omit }}"

@@ -3,10 +3,14 @@ Role Name: multienv
 
 [![Build Status](https://travis-ci.org/jobcespedes/multienv.svg?branch=master)](https://travis-ci.org/jobcespedes/multienv) [![Buy me a coffee](https://img.shields.io/badge/$-BuyMeACoffee-blue.svg)](https://www.buymeacoffee.com/jobcespedes)
 
-Description: A stackable multienvironment directory layout for Ansible using unionfs and Docker or Podman. Check this [Github project](https://github.com/jobcespedes/demo-multienv) with demo data for the environments
+Description: A stackable multienvironment directory layout for Ansible using unionfs. Check this [Github project](https://github.com/jobcespedes/demo-multienv) with demo data for the environments
+
+There are three methods to run unionfs binary. From unionfs binary in the host, a docker container or a podman container.
 
 Requirements
 ------------
+Using `unionfs` host binary
+- unionfs-fuse
 
 Using docker engine
 - Docker
@@ -57,7 +61,6 @@ Example Playbook
   roles:
     - jobcespedes.multienv
 ```
-
 Run it with docker:
 ```bash
 ansible-playbook -i localhost, multienv.yml
@@ -65,7 +68,19 @@ ansible-playbook -i localhost, multienv.yml
 
 Run it with podman:
 ```bash
-ansible-playbook -i localhost, multienv.yml -e multienv_podman=true -K
+# podman method requires sudo
+ansible-playbook -i localhost, multienv.yml -e multienv_method=podman -K
+```
+
+Run it with binary in host:
+```bash
+
+ansible-playbook -i localhost, multienv.yml -e multienv_method=binary
+```
+
+Unmount it
+```bash
+ansible-playbook -i localhost, multienv.yml -e multienv_stop=true
 ```
 License
 -------

@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: make / a shared mount - https://github.com/rancher/rancher/issues/12205#issuecomment-385661588
-      shell: mount --make-rshared /
+      command: mount --make-rshared /
       when: ansible_os_family == 'RedHat'
 
     - name: install apt-transport-https
@@ -12,14 +12,21 @@
         update_cache: yes
       when: ansible_os_family == 'Debian'
 
+    - name: use python3 for ubuntu
+      when: ansible_distribution == 'Ubuntu'
+      set_fact:
+        pip_package: python3-pip
+        pip_executable: pip3
+
+    - name: install python docker
+      vars:
+        pip_install_packages:
+          - name: docker
+      import_role:
+        name: geerlingguy.pip
+
     - name: install docker
       vars:
         docker_install_compose: false
       import_role:
         name: geerlingguy.docker
-
-    - name: install python docker
-      vars:
-        pip_install_packages: docker
-      import_role:
-        name: geerlingguy.pip
